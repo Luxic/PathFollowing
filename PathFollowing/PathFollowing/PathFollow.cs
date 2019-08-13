@@ -2,15 +2,6 @@
 
 namespace PathFollowing
 {
-	public enum Chars
-	{
-		Start = '@',
-		End = 'X',
-		Horizontal = '-',
-		Vertical = '|',
-		Empty = ' '
-	}
-
 	public class PathFollow
 	{
 		#region Fields
@@ -31,7 +22,7 @@ namespace PathFollowing
 		#region Constructor
 
 		public PathFollow(char[,] matrix)
-		{ 
+		{
 			this.matrix = matrix;
 		}
 
@@ -47,9 +38,7 @@ namespace PathFollowing
 
 			if (node.Character == (char)Chars.End)
 				getCharacters(startPosition);
-
 		}
-
 
 		private void getCharacters(Node node)
 		{
@@ -59,11 +48,11 @@ namespace PathFollowing
 			{
 				PathAsCharacters += currentNode.Character;
 
-				if (((currentNode.Character >= 65 && currentNode.Character <= 90) || (currentNode.Character >= 97 && currentNode.Character <= 122)) && currentNode.Character != (char)Chars.End)
+				if (Helper.IsLetter(currentNode.Character) && currentNode.Character != (char)Chars.End)
 					Letters += currentNode.Character;
 
 				currentNode = currentNode.ChildNode;
-			} 
+			}
 		}
 
 		private Node FindPath(Node node)
@@ -83,7 +72,7 @@ namespace PathFollowing
 				if (x < 0 || x >= matrix.GetLength(0) || y < 0 || y >= matrix.GetLength(1) || matrix[x, y] == ' ' || matrix[x, y] == (char)Chars.Start)
 					continue;
 
-				if ((matrix[x, y] == (char)Chars.Horizontal && dir.c == (char)Chars.Horizontal) || (matrix[x, y] == (char)Chars.Vertical && dir.c == (char)Chars.Vertical))
+				if (Helper.IsInDirection(matrix[x, y], dir.c))
 				{
 					if (Direction.Compare(node.direction, dir))
 						continue;
@@ -95,9 +84,9 @@ namespace PathFollowing
 				{
 					nextNode = new Node(x, y, matrix[x, y], dir);
 					node.ChildNode = nextNode;
-
 				}
 			}
+
 			return FindPath(nextNode);
 		}
 
@@ -105,9 +94,9 @@ namespace PathFollowing
 		{
 			if (matrix[x, y] != (char)Chars.Horizontal && matrix[x, y] != (char)Chars.Vertical)
 			{
-				Node no = new Node(x, y, matrix[x, y], dir);
-				node.ChildNode = no;
-				return no;
+				Node retNode = new Node(x, y, matrix[x, y], dir);
+				node.ChildNode = retNode;
+				return retNode;
 			}
 
 			x += dir.x;
@@ -131,6 +120,6 @@ namespace PathFollowing
 			return null;
 		}
 
-		#endregion 
+		#endregion
 	}
 }

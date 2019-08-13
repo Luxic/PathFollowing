@@ -7,7 +7,7 @@ namespace PathFollowing
 		static void Main(string[] args)
 		{
 
-			char[,] matrix = TestMatrix.Matrix4;
+			char[,] matrix = TestMatrix.Matrix;
 
 			PathFollow f = new PathFollow(matrix);
 			f.StartPathFollowing();
