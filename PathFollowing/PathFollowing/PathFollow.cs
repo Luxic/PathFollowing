@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
 
 namespace PathFollowing
 {
@@ -58,10 +57,9 @@ namespace PathFollowing
 
 			while (currentNode != null)
 			{
-
 				PathAsCharacters += currentNode.Character;
 
-				if ((currentNode.Character >= 65 && currentNode.Character <= 90) || (currentNode.Character >= 97 && currentNode.Character <= 122))
+				if (((currentNode.Character >= 65 && currentNode.Character <= 90) || (currentNode.Character >= 97 && currentNode.Character <= 122)) && currentNode.Character != (char)Chars.End)
 					Letters += currentNode.Character;
 
 				currentNode = currentNode.ChildNode;
