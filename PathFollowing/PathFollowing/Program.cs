@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 
 namespace PathFollowing
 {
 	class Program
 	{
+		
 		static void Main(string[] args)
 		{
 
