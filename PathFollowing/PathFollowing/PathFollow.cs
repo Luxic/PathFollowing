@@ -4,6 +4,8 @@ namespace PathFollowing
 {
 	public class PathFollow
 	{
+		
+		
 		#region Fields
 
 		char[,] matrix;
