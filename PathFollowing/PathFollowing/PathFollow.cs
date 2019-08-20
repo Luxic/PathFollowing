@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace PathFollowing
 {
 	public class PathFollow
 	{
+		
+		//Pull
 		#region Fields
 
 		char[,] matrix;
