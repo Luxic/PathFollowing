@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace PathFollowing
 {
@@ -6,6 +6,8 @@ namespace PathFollowing
 	{
 		
 		//Pull
+//Local change
+
 		#region Fields
 
 		char[,] matrix;
